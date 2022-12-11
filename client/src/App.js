@@ -1,12 +1,14 @@
 import './App.css';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+
 
 function App() {
   const [books, setBooks] = useState([])
   // Get all Books
+  let host="";
   const getBooks = async () => {
     // API Call 
-    const response = await fetch(`http://localhost:5000/fetchbook`, {
+    const response = await fetch(`${host}/fetchbook`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -14,6 +16,7 @@ function App() {
     });
     const json = await response.json();
     setBooks(json);
+    console.log(books);
   }
 
   useEffect(() => {
